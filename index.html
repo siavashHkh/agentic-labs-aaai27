@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AAAI-27 Agentic Laboratories</title>
+<meta name="description" content="AAAI 2027 Workshop on Agentic Laboratories: Coordinating AI Scientists for Autonomous Physical Experimentation.">
+<meta property="og:title" content="Agentic Laboratories · AAAI 2027 Workshop">
+<meta property="og:description" content="Coordinating AI Scientists for Autonomous Physical Experimentation. A full-day workshop at AAAI 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230f766e'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #fbfaf7;
+  --bg-alt: #f2f0ea;
+  --surface: #ffffff;
+  --ink: #16202b;
+  --ink-2: #4a5563;
+  --ink-3: #6b7582;
+  --line: #e2ded4;
+  --accent: #0f766e;
+  --accent-ink: #0b5a54;
+  --accent-soft: #e3f2ef;
+  --warm: #b45309;
+  --warm-soft: #fbefdf;
+  --hero-bg: #0f1c24;
+  --hero-ink: #eef3f2;
+  --hero-ink-2: #a9bcbb;
+  --shadow: 0 1px 2px rgba(20,30,40,.05), 0 4px 16px rgba(20,30,40,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1418; --bg-alt: #131b20; --surface: #172127;
+    --ink: #e7ecee; --ink-2: #b3bec4; --ink-3: #8b979e; --line: #26333b;
+    --accent: #3fb8a8; --accent-ink: #6fd1c3; --accent-soft: #15302d;
+    --warm: #f0a54a; --warm-soft: #33260f;
+    --hero-bg: #0a1116; --shadow: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1418; --bg-alt: #131b20; --surface: #172127;
+  --ink: #e7ecee; --ink-2: #b3bec4; --ink-3: #8b979e; --line: #26333b;
+  --accent: #3fb8a8; --accent-ink: #6fd1c3; --accent-soft: #15302d;
+  --warm: #f0a54a; --warm-soft: #33260f;
+  --hero-bg: #0a1116; --shadow: none;
+  color-scheme: dark;
+}
+:root { color-scheme: light; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.65 "Public Sans", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-stretch: 112%; font-weight: 700; font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.2; letter-spacing: -0.01em; }
+h2 { text-wrap: balance; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0 0 .4rem; }
+h3 { font-size: 1.1rem; margin: 0 0 .3rem; }
+a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.eyebrow { font: 600 .78rem/1 "Public Sans", system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 .9rem; }
+.lede { color: var(--ink-2); font-size: 1.08rem; max-width: 68ch; }
+.tba { display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .04em; color: var(--warm); background: var(--warm-soft); border-radius: 999px; padding: 2px 10px; }
+
+/* nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.brand { font: 700 1rem Archivo, "Helvetica Neue", Arial, sans-serif; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.brand .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+.brand .dot::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--bg); }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; }
+.nav ul a { color: var(--ink-2); text-decoration: none; font-size: .92rem; font-weight: 500; }
+.nav ul a:hover { color: var(--accent); }
+.nav-right { display: flex; align-items: center; gap: 22px; }
+.theme-btn { display: grid; place-items: center; width: 36px; height: 36px; background: none; border: 1px solid var(--line); border-radius: 8px; color: var(--ink-2); cursor: pointer; }
+.theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+.theme-btn:focus-visible, .menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.theme-btn .sun { display: none; }
+.is-dark .theme-btn .sun { display: block; }
+.is-dark .theme-btn .moon { display: none; }
+.menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); padding: 6px 10px; font: 500 .9rem "Public Sans", system-ui, sans-serif; cursor: pointer; }
+@media (max-width: 860px) {
+  .menu-btn { display: block; }
+  .nav-right { gap: 10px; }
+  .nav ul { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 16px 14px; }
+  .nav ul.open { display: flex; }
+  .nav ul a { display: block; padding: 10px 8px; }
+}
+
+/* hero */
+.hero { background: var(--hero-bg); color: var(--hero-ink); padding: 72px 0 80px; overflow: hidden; position: relative; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(to bottom, #000 30%, transparent); }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+.hero .eyebrow { color: #5fd3c2; }
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); margin: 0 0 .5rem; }
+.hero .sub { font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--hero-ink-2); margin: 0 0 1.6rem; font-weight: 400; }
+.meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 2rem; padding: 0; list-style: none; color: var(--hero-ink); font-size: .95rem; }
+.meta li { display: flex; align-items: center; gap: 8px; }
+.meta svg { width: 17px; height: 17px; stroke: #5fd3c2; fill: none; stroke-width: 2; flex: none; }
+.meta .tba { background: rgba(240,165,74,.15); color: #f5b867; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-block; padding: 11px 20px; border-radius: 8px; font-weight: 600; font-size: .95rem; text-decoration: none; }
+.btn-primary { background: #2bb3a1; color: #06201d; }
+.btn-primary:hover { background: #45c8b6; color: #06201d; }
+.btn-ghost { border: 1px solid rgba(255,255,255,.25); color: var(--hero-ink); }
+.btn-ghost:hover { border-color: #5fd3c2; color: #fff; }
+.diagram { width: 100%; height: auto; }
+.diagram .node rect { fill: #16303a; stroke: #2f5561; }
+.diagram .node text { fill: #e6efee; font: 600 13px "Public Sans", system-ui, sans-serif; }
+.diagram .node .small { fill: #93aeb0; font: 400 11px "Public Sans", system-ui, sans-serif; }
+.diagram .wm circle.core { fill: #0f766e; }
+.diagram .wm text { fill: #fff; font: 700 13px Archivo, "Helvetica Neue", Arial, sans-serif; }
+.diagram .edge { stroke: #5fd3c2; stroke-width: 1.6; fill: none; }
+.diagram .link { stroke: #5fd3c2; stroke-opacity: .45; stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; }
+.diagram .edge-label { fill: #93aeb0; font: 400 11px "Public Sans", system-ui, sans-serif; }
+.diagram .pulse { fill: none; stroke: #2bb3a1; stroke-opacity: .5; animation: pulse 3.2s ease-out infinite; transform-origin: 260px 185px; }
+@keyframes pulse { from { transform: scale(1); stroke-opacity: .55; } to { transform: scale(1.55); stroke-opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .diagram .pulse { animation: none; } }
+@media (max-width: 860px) {
+  .hero { padding: 48px 0 56px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 36px; }
+  .diagram { max-width: 440px; margin: 0 auto; display: block; }
+}
+
+/* sections */
+section.block { padding: 84px 0; }
+section.alt { background: var(--bg-alt); }
+.section-head { margin-bottom: 36px; }
+@media (max-width: 640px) { section.block { padding: 60px 0; } .wrap { padding: 0 16px; } }
+
+.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
+.about-grid p { margin: 0 0 1.1rem; color: var(--ink-2); }
+.questions { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 26px 10px; box-shadow: var(--shadow); align-self: start; }
+.questions h3 { margin-bottom: 14px; }
+.questions ol { list-style: none; padding: 0; margin: 0; counter-reset: q; }
+.questions li { counter-increment: q; position: relative; padding: 0 0 18px 40px; color: var(--ink-2); }
+.questions li::before { content: counter(q); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-ink); font: 700 .85rem Archivo, "Helvetica Neue", Arial, sans-serif; display: grid; place-items: center; }
+@media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+/* topics */
+.topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.topic { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 20px 18px; box-shadow: var(--shadow); }
+.topic .num { font: 700 .8rem Archivo, "Helvetica Neue", Arial, sans-serif; color: var(--accent); letter-spacing: .06em; }
+.topic h3 { font-size: 1.02rem; margin: 6px 0 6px; }
+.topic p { margin: 0; color: var(--ink-2); font-size: .92rem; line-height: 1.55; }
+
+.tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 44px; }
+.track { border-radius: 12px; padding: 24px; border: 1px solid var(--line); background: var(--surface); }
+.track .pages { font: 700 2rem Archivo, "Helvetica Neue", Arial, sans-serif; color: var(--accent); line-height: 1; }
+.track .pages small { font-size: .9rem; font-weight: 500; color: var(--ink-3); margin-left: 4px; }
+.track h3 { margin: 12px 0 6px; }
+.track p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.review { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.review div { padding: 20px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 10px 10px 0; }
+.review h3 { font-size: 1rem; }
+.review p { margin: 0; color: var(--ink-2); font-size: .92rem; }
+@media (max-width: 760px) { .tracks, .review { grid-template-columns: 1fr; } }
+
+/* dates */
+.dates { max-width: 720px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.dates div { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 22px; border-top: 1px solid var(--line); }
+.dates div:first-child { border-top: 0; }
+.dates > div > span:first-child { font-weight: 500; }
+.dates > div > span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.note { color: var(--ink-3); font-size: .88rem; margin-top: 14px; }
+
+/* schedule */
+.schedule { display: grid; gap: 0; border-left: 2px solid var(--line); margin-left: 8px; max-width: 860px; }
+.slot { position: relative; display: grid; grid-template-columns: 130px 1fr; gap: 20px; padding: 12px 0 12px 24px; }
+.slot::before { content: ""; position: absolute; left: -7px; top: 19px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-alt); border: 2px solid var(--ink-3); }
+.slot.talk::before, .slot.panel::before, .slot.oral::before { border-color: var(--accent); background: var(--accent); }
+.slot.brk { color: var(--ink-3); }
+.slot time { font: 500 .86rem "IBM Plex Mono", ui-monospace, Menlo, monospace; color: var(--ink-2); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.slot .what { font-weight: 500; }
+.slot .kind { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-soft); border-radius: 4px; padding: 1px 7px; margin-right: 8px; vertical-align: 2px; }
+.slot.brk .kind { color: var(--ink-3); background: var(--line); }
+.slot .detail { color: var(--ink-3); font-size: .9rem; font-weight: 400; }
+.session-label { padding: 22px 0 6px 24px; font: 700 .78rem "Public Sans", system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+@media (max-width: 560px) { .slot { grid-template-columns: 1fr; gap: 2px; } }
+
+/* people */
+.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+.person { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; box-shadow: var(--shadow); }
+.avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-ink); display: grid; place-items: center; font: 700 1.2rem Archivo, "Helvetica Neue", Arial, sans-serif; overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.person h3 { margin: 2px 0 2px; }
+.person h3 a { color: var(--ink); text-decoration: none; }
+.person h3 a:hover { color: var(--accent); }
+.person .aff { font-size: .88rem; color: var(--accent-ink); font-weight: 500; margin: 0 0 8px; }
+.person p.bio { margin: 0; font-size: .9rem; color: var(--ink-2); line-height: 1.55; }
+.subhead { margin: 52px 0 18px; font-size: 1.25rem; }
+@media (max-width: 400px) { .people { grid-template-columns: 1fr; } .person { grid-template-columns: 1fr; } }
+
+.orgs { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.org { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: flex; gap: 14px; align-items: center; }
+.org .avatar { width: 48px; height: 48px; font-size: .95rem; flex: none; }
+.org h3 { font-size: .98rem; margin: 0; }
+.org h3 a { color: var(--ink); text-decoration: none; }
+.org h3 a:hover { color: var(--accent); }
+.org p { margin: 2px 0 0; font-size: .84rem; color: var(--ink-3); line-height: 1.4; }
+.org.main { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.group-title { font: 600 .82rem "Public Sans", system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 34px 0 12px; }
+
+/* contact + footer */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.contact ul { list-style: none; padding: 0; margin: 0; }
+.contact li { padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.contact li { align-items: baseline; }
+.contact li div { display: flex; flex-direction: column; }
+.contact li span { color: var(--ink-3); font-size: .88rem; }
+.contact .email { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: .86rem; user-select: all; overflow-wrap: anywhere; }
+@media (max-width: 760px) { .contact { grid-template-columns: 1fr; } }
+footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--ink-3); font-size: .88rem; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+</style>
+<script>
+  try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="dot"></span>Agentic Labs @ AAAI-27</a>
+    <div class="nav-right">
+    <ul id="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#cfp">Call for Papers</a></li>
+      <li><a href="#dates">Dates</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#speakers">Speakers</a></li>
+      <li><a href="#organizers">Organizers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" type="button" aria-label="Switch to dark mode">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">AAAI 2027 Workshop</p>
+      <h1>Agentic Laboratories</h1>
+      <p class="sub">Coordinating AI Scientists for Autonomous Physical Experimentation</p>
+      <ul class="meta">
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>February 22–23, 2027 <span class="tba">Day TBA</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Palais des Congrès, Montréal, Canada</li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Full day, in person</li>
+      </ul>
+      <div class="cta">
+        <a class="btn btn-primary" href="#cfp">Call for Papers</a>
+        <a class="btn btn-ghost" href="#schedule">View schedule</a>
+      </div>
+    </div>
+
+    <svg class="diagram" viewBox="0 0 520 380" role="img" aria-label="A shared laboratory world model at the centre coordinates a domain-expert agent, a planner agent and embodied robot agents, detecting deviations and feeding corrections back.">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5fd3c2"/></marker>
+      </defs>
+      <!-- cycle edges -->
+      <path class="edge" d="M168 60 H352" marker-end="url(#arr)"/>
+      <text class="edge-label" x="260" y="50" text-anchor="middle">hypothesis → protocol</text>
+      <path class="edge" d="M420 88 Q440 200 350 300" marker-end="url(#arr)"/>
+      <text class="edge-label" x="450" y="200" text-anchor="middle">execute</text>
+      <path class="edge" d="M170 322 Q70 230 96 92" marker-end="url(#arr)"/>
+      <text class="edge-label" x="60" y="228" text-anchor="middle">results</text>
+      <!-- world-model links -->
+      <path class="link" d="M110 88 L215 150"/>
+      <path class="link" d="M410 88 L305 150"/>
+      <path class="link" d="M260 300 L260 245"/>
+      <!-- world model -->
+      <g class="wm">
+        <circle class="pulse" cx="260" cy="185" r="58"/>
+        <circle class="core" cx="260" cy="185" r="58"/>
+        <text x="260" y="172" text-anchor="middle">Shared</text>
+        <text x="260" y="190" text-anchor="middle">lab world</text>
+        <text x="260" y="208" text-anchor="middle">model</text>
+      </g>
+      <!-- nodes -->
+      <g class="node"><rect x="18" y="34" width="150" height="54" rx="10"/><text x="93" y="58" text-anchor="middle">Domain-expert agent</text><text class="small" x="93" y="75" text-anchor="middle">proposes hypotheses</text></g>
+      <g class="node"><rect x="352" y="34" width="150" height="54" rx="10"/><text x="427" y="58" text-anchor="middle">Planner agent</text><text class="small" x="427" y="75" text-anchor="middle">writes protocols</text></g>
+      <g class="node"><rect x="170" y="300" width="180" height="54" rx="10"/><text x="260" y="324" text-anchor="middle">Embodied robot agents</text><text class="small" x="260" y="341" text-anchor="middle">run the physical lab</text></g>
+    </svg>
+  </div>
+</header>
+
+<main>
+
+<section class="block" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">About the workshop</p>
+      <h2>From AI Scientists to autonomous laboratories</h2>
+      <p>Over the past two years, autonomous “AI Scientist” agents have shown they can search literature, write code, run computational experiments and draft papers with little human help. That work has now moved from digital to physical environments: robotic agents act in real laboratories and run autonomous experiments in chemistry, biology, materials science and beyond.</p>
+      <p>A real autonomous laboratory is never one agent. It is a system of heterogeneous agents coordinated by a <strong>shared world model of the laboratory</strong>. A domain-expert agent proposes hypotheses, a planner agent turns them into executable protocols, and embodied robot agents carry those protocols out. The world model tracks their interactions, predicts what each step should produce, detects failures when observations deviate, and feeds corrections back to the responsible agent.</p>
+      <p>Self-driving labs such as Berkeley’s A-Lab already work this way. Its AlabOS orchestration layer synthesized around 3,500 samples over 1.5 years. But that coordination is hand-engineered and must be rebuilt for every new lab. This workshop looks at the physical frontier of auto-research. We will survey laboratory automation across fields, compare hand-engineered orchestration with emerging agentic and world-model-driven approaches, and identify what is still missing on the path to generally autonomous laboratories.</p>
+    </div>
+    <aside class="questions">
+      <h3>Central questions</h3>
+      <ol>
+        <li>What does it take for a system of agents to collaboratively run a trustworthy physical experiment?</li>
+        <li>How far can autonomous laboratory research proceed with minimal, well-defined human intervention?</li>
+        <li>How can an agent system built for one laboratory transfer to new experiments, instruments, or entirely different scientific fields with minimal re-engineering?</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section class="block alt" id="cfp">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Call for papers</p>
+      <h2>Topics of interest</h2>
+      <p class="lede">We invite contributions on a broad range of topics, including but not limited to:</p>
+    </div>
+    <div class="topics">
+      <div class="topic"><span class="num">01</span><h3>Multi-agent research architectures</h3><p>Role decomposition and communication patterns for physical experimentation.</p></div>
+      <div class="topic"><span class="num">02</span><h3>World-model-driven coordination &amp; scheduling</h3><p>Task allocation and multi-agent planning on shared instruments under temporal, resource and safety constraints.</p></div>
+      <div class="topic"><span class="num">03</span><h3>Embodied execution</h3><p>VLA/VLM-based manipulation, navigation and perception; grounding natural-language protocols into verified robot-executable actions.</p></div>
+      <div class="topic"><span class="num">04</span><h3>Verification &amp; reproducibility</h3><p>Monitoring and review agents that check results against action logs, sensor readings and instrument data, and catch mismatches between reported and actual execution.</p></div>
+      <div class="topic"><span class="num">05</span><h3>Human–agent teaming</h3><p>Oversight interfaces, intervention protocols, and dividing scientific authority between human researchers and agent collectives.</p></div>
+      <div class="topic"><span class="num">06</span><h3>Benchmarks &amp; testbeds</h3><p>Simulators, digital twins and remote/cloud-lab platforms for evaluating and comparing multi-agent lab systems across labs.</p></div>
+      <div class="topic"><span class="num">07</span><h3>Domain case studies as systems problems</h3><p>Deployments in chemistry, biology, materials science and beyond, analyzed through coordination, prediction and verification, not domain results alone.</p></div>
+      <div class="topic"><span class="num">08</span><h3>Safety, governance &amp; broader impacts</h3><p>Safety constraints for physically acting agents, authorship and accountability, and governance of increasingly autonomous labs.</p></div>
+    </div>
+
+    <h2 class="subhead">Submission tracks</h2>
+    <p class="lede">Both tracks are hosted on OpenReview (submission link <span class="tba">TBA</span>). We welcome work that is unpublished or currently under submission elsewhere.</p>
+    <div class="tracks">
+      <div class="track">
+        <div class="pages">7<small>pages max</small></div>
+        <h3>Main Track</h3>
+        <p>Full papers of up to seven pages, excluding references and supplementary material, which have no page limit.</p>
+      </div>
+      <div class="track">
+        <div class="pages">4<small>pages max</small></div>
+        <h3>Short Papers Track</h3>
+        <p>Works in progress and intermediate milestones. We especially encourage submissions from underrepresented, under-resourced and early-career researchers to share experiences, get feedback and find collaborators.</p>
+      </div>
+    </div>
+    <div class="review">
+      <div><h3>Review</h3><p>Every paper gets at least three experienced reviewers. Conflicts of interest are handled through OpenReview.</p></div>
+      <div><h3>Oral presentations</h3><p>Reviewers can nominate papers from either track for an oral. Non-conflicted reviewers then rank the nominees.</p></div>
+      <div><h3>Best Student Paper</h3><p>An award for a paper authored or co-authored by a student, to recognize their research potential and raise their visibility.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="dates">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Important dates</p>
+      <h2>Timeline</h2>
+    </div>
+    <div class="dates">
+      <div><span>Paper submission deadline</span><span>Fri, Nov 20, 2026</span></div>
+      <div><span>Author notification</span><span>Wed, Dec 2, 2026</span></div>
+      <div><span>Camera-ready deadline</span><span class="tba">TBA</span></div>
+      <div><span>Workshop day</span><span>Mon, Feb 22 or Tue, Feb 23, 2027 <span class="tba">Day TBA</span></span></div>
+    </div>
+    <p class="note">The AAAI-27 workshop program takes place Monday, February 22 and Tuesday, February 23, 2027, at the Palais des Congrès de Montréal. Deadlines follow the <a href="https://aaai.org/conference/aaai/aaai-27/workshops-call/">AAAI-27 workshop program</a> guidelines. All deadlines are 23:59 Anywhere on Earth (AoE).</p>
+  </div>
+</section>
+
+<section class="block alt" id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Program</p>
+      <h2>Tentative schedule</h2>
+      <p class="lede">A full-day, in-person program with six invited talks, four oral presentations, two poster sessions and a panel discussion.</p>
+    </div>
+    <div class="schedule">
+      <div class="session-label">Morning</div>
+      <div class="slot"><time>09:00–09:15</time><div class="what">Welcome &amp; Opening Remarks</div></div>
+      <div class="slot talk"><time>09:15–09:45</time><div class="what"><span class="kind">Talk</span><a href="#sp-holmstrom">Jan Holmström</a> <span class="detail">· Aalto University</span></div></div>
+      <div class="slot talk"><time>09:45–10:15</time><div class="what"><span class="kind">Talk</span><a href="#sp-aspuru">Alán Aspuru-Guzik</a> <span class="detail">· University of Toronto</span></div></div>
+      <div class="slot brk"><time>10:15–10:45</time><div class="what"><span class="kind">Break</span>Coffee &amp; Networking</div></div>
+      <div class="slot talk"><time>10:45–11:15</time><div class="what"><span class="kind">Talk</span><a href="#sp-cronin">Lee Cronin</a> <span class="detail">· University of Glasgow</span></div></div>
+      <div class="slot oral"><time>11:15–11:55</time><div class="what"><span class="kind">Orals</span>Oral Presentations I <span class="detail">· two selected papers, 20 min each incl. Q&amp;A</span></div></div>
+      <div class="slot brk"><time>11:55–13:30</time><div class="what"><span class="kind">Posters</span>Poster Session I &amp; Lunch</div></div>
+      <div class="session-label">Afternoon</div>
+      <div class="slot talk"><time>13:30–14:00</time><div class="what"><span class="kind">Talk</span><a href="#sp-hattrick">Jason Hattrick-Simpers</a> <span class="detail">· University of Toronto</span></div></div>
+      <div class="slot talk"><time>14:00–14:30</time><div class="what"><span class="kind">Talk</span><a href="#sp-maruyama">Benji Maruyama</a> <span class="detail">· Air Force Research Laboratory</span></div></div>
+      <div class="slot brk"><time>14:30–15:00</time><div class="what"><span class="kind">Break</span>Coffee &amp; Networking</div></div>
+      <div class="slot talk"><time>15:00–15:30</time><div class="what"><span class="kind">Talk</span><a href="#sp-shimizu">Cogan Matthew Shimizu</a> <span class="detail">· Wright State University</span></div></div>
+      <div class="slot oral"><time>15:30–16:10</time><div class="what"><span class="kind">Orals</span>Oral Presentations II <span class="detail">· two selected papers, 20 min each incl. Q&amp;A</span></div></div>
+      <div class="slot panel"><time>16:10–17:10</time><div class="what"><span class="kind">Panel</span>Panel Discussion <span class="detail">· <a href="#sp-holmstrom">Jan Holmström</a>, <a href="#sp-chang">Matthew Chang</a>, <a href="#sp-zhao">Huimin Zhao</a></span></div></div>
+      <div class="slot brk"><time>17:10–18:10</time><div class="what"><span class="kind">Posters</span>Poster Session II</div></div>
+      <div class="slot"><time>18:10–18:30</time><div class="what">Best Student Paper Award &amp; Closing Remarks</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="speakers">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Confirmed</p>
+      <h2>Invited speakers</h2>
+      <p class="lede">Expertise spanning self-driving laboratories, autonomous chemistry and materials experimentation, synthetic biology and biofoundries, and operations management.</p>
+    </div>
+    <div class="people">
+      <article class="person" id="sp-aspuru">
+        <div class="avatar">AA</div>
+        <div>
+          <h3><a href="https://www.matter.toronto.edu/basic-content-page/about-alan">Alán Aspuru-Guzik</a></h3>
+          <p class="aff">University of Toronto, Canada</p>
+          <p class="bio">Professor of Chemistry and Computer Science and Director of the Acceleration Consortium. Combines AI, robotics and high-throughput experimentation to build materials-acceleration platforms and self-driving laboratories.</p>
+        </div>
+      </article>
+      <article class="person" id="sp-cronin">
+        <div class="avatar">LC</div>
+        <div>
+          <h3><a href="https://www.chem.gla.ac.uk/cronin/">Lee Cronin</a></h3>
+          <p class="aff">University of Glasgow, UK</p>
+          <p class="bio">Regius Chair of Chemistry, leading research in digital chemistry and programmable synthesis. His group develops the Chemputer and the chemputation framework, which translate and execute chemical procedures and integrate AI with robotic experimentation.</p>
+        </div>
+      </article>
+      <article class="person" id="sp-hattrick">
+        <div class="avatar">JH</div>
+        <div>
+          <h3><a href="https://mse.utoronto.ca/faculty-staff/professors/jason-hattrick-simpers/">Jason Hattrick-Simpers</a></h3>
+          <p class="aff">University of Toronto, Canada</p>
+          <p class="bio">Professor of Materials Science and Engineering and Research Scientist at CanmetMATERIALS. Leads the Autonomous Discovery of Alloys (AutoDIAL) group, building AI-guided automated platforms for materials discovery, with interests in autonomous lab science and trustworthy AI.</p>
+        </div>
+      </article>
+      <article class="person" id="sp-holmstrom">
+        <div class="avatar">JH</div>
+        <div>
+          <h3><a href="https://www.aalto.fi/en/people/jan-holmstrom">Jan Holmström</a></h3>
+          <p class="aff">Aalto University, Finland</p>
+          <p class="bio">Professor in the Department of Industrial Engineering and Management. His research spans operations and supply-chain management, intelligent products, tracking and tracing, and technology-enabled innovation.</p>
+        </div>
+      </article>
+      <article class="person" id="sp-maruyama">
+        <div class="avatar">BM</div>
+        <div>
+          <h3><a href="https://www.ervacommunity.org/profile/benji-maruyama/">Benji Maruyama</a></h3>
+          <p class="aff">Air Force Research Laboratory, USA</p>
+          <p class="bio">Autonomous Materials Lead in AFRL’s Materials &amp; Manufacturing Directorate. Developed ARES, one of the earliest autonomous research systems for materials, which combines robotics, AI and data science to direct and run experiments autonomously.</p>
+        </div>
+      </article>
+      <article class="person" id="sp-shimizu">
+        <div class="avatar">CS</div>
+        <div>
+          <h3><a href="https://cogan-shimizu.github.io/">Cogan Matthew Shimizu</a></h3>
+          <p class="aff">Wright State University, USA</p>
+          <p class="bio">Assistant Professor of Computer Science and Engineering and Director of the Knowledge and Semantic Technologies (KASTLE) Lab. Works on knowledge graphs, ontology modeling and design patterns, and neurosymbolic AI.</p>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="subhead">Panelists</h2>
+    <div class="people">
+      <article class="person" id="sp-chang">
+        <div class="avatar">MC</div>
+        <div>
+          <h3><a href="https://synbiolab.org/matthew-chang/">Matthew Chang</a></h3>
+          <p class="aff">National University of Singapore</p>
+          <p class="bio">Provost’s Chair Professor of Biochemistry and Executive Director of the National Centre for Engineering Biology, Singapore. Brings extensive biofoundry experience in automated biological experimentation and large-scale research infrastructure.</p>
+        </div>
+      </article>
+      <article class="person" id="sp-zhao">
+        <div class="avatar">HZ</div>
+        <div>
+          <h3><a href="https://chemistry.illinois.edu/zhao5">Huimin Zhao</a></h3>
+          <p class="aff">University of Illinois Urbana-Champaign, USA</p>
+          <p class="bio">Steven L. Miller Chair Professor of Chemical and Biomolecular Engineering. Integrates synthetic biology, machine learning and lab automation. His group built iBioFAB, which couples computational design with robotic execution of biological workflows.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">JH</div>
+        <div>
+          <h3><a href="#sp-holmstrom">Jan Holmström</a></h3>
+          <p class="aff">Aalto University, Finland</p>
+          <p class="bio">Also an invited speaker. See above.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="organizers">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Organizing committee</p>
+      <h2>Organizers</h2>
+      <p class="lede">An intentionally cross-disciplinary committee from universities, national laboratories and industry, spanning agentic AI, robotics, chemistry, materials science and synthetic biology.</p>
+    </div>
+
+    <p class="group-title">Main organizers</p>
+    <div class="orgs">
+      <div class="org main"><div class="avatar">BS</div><div><h3><a href="https://people.epfl.ch/berend.smit?lang=en">Berend Smit</a></h3><p>EPFL, Switzerland</p></div></div>
+      <div class="org main"><div class="avatar">PF</div><div><h3><a href="https://profiles.imperial.ac.uk/p.freemont">Paul S. Freemont</a></h3><p>Imperial College London, UK</p></div></div>
+      <div class="org main"><div class="avatar">SK</div><div><h3><a href="https://www.aalto.fi/en/people/siavash-khajavi-haghighat">Siavash H. Khajavi</a></h3><p>Aalto University, Finland</p></div></div>
+      <div class="org main"><div class="avatar">TG</div><div><h3><a href="https://www.tirthankarghosal.com/">Tirthankar Ghosal</a></h3><p>Oak Ridge National Laboratory, USA</p></div></div>
+      <div class="org main"><div class="avatar">ZL</div><div><h3><a href="https://www.linkedin.com/in/zixuan-liu-8aa56b221/">Zixuan Liu</a></h3><p>Tulane University, USA</p></div></div>
+    </div>
+
+    <p class="group-title">AI, robotics &amp; autonomous scientific systems</p>
+    <div class="orgs">
+      <div class="org"><div class="avatar">AG</div><div><h3><a href="https://animesh.garg.tech/">Animesh Garg</a></h3><p>Georgia Institute of Technology, USA</p></div></div>
+      <div class="org"><div class="avatar">TG</div><div><h3><a href="https://developer.nvidia.com/blog/author/tgibbs/">Tom Gibbs</a></h3><p>NVIDIA, USA</p></div></div>
+      <div class="org"><div class="avatar">RK</div><div><h3><a href="https://www.chalmers.se/en/persons/rossk/">Ross D. King</a></h3><p>Chalmers University of Technology, Sweden</p></div></div>
+    </div>
+
+    <p class="group-title">Chemistry, materials science &amp; molecular discovery</p>
+    <div class="orgs">
+      <div class="org"><div class="avatar">BD</div><div><h3><a href="https://www.nist.gov/people/brian-decost">Brian DeCost</a></h3><p>NIST, USA</p></div></div>
+      <div class="org"><div class="avatar">FS</div><div><h3><a href="https://chemie.uni-wuppertal.de/en/chemistry-home/research-groups/ag-strieth-kalthoff/">Felix Strieth-Kalthoff</a></h3><p>University of Wuppertal, Germany</p></div></div>
+      <div class="org"><div class="avatar">JT</div><div><h3><a href="https://jian-tang.com/">Jian Tang</a></h3><p>HEC Montréal, Canada</p></div></div>
+    </div>
+
+    <p class="group-title">Synthetic biology &amp; biological automation</p>
+    <div class="orgs">
+      <div class="org"><div class="avatar">NG</div><div><h3><a href="https://www.linkedin.com/in/nicholas-gold-8a8207254/">Nicholas Gold</a></h3><p>Genome Foundry, Concordia University, Canada</p></div></div>
+      <div class="org"><div class="avatar">MJ</div><div><h3><a href="https://engineering.stanford.edu/people/michael-jewett">Michael C. Jewett</a></h3><p>Stanford University, USA</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap contact">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
+      <p class="lede">For questions about submissions or the program, contact:</p>
+    </div>
+    <ul>
+      <li><div><strong>Siavash H. Khajavi</strong><span>Aalto University</span></div><a class="email" href="mailto:siavash.khajavi@aalto.fi">siavash.khajavi@aalto.fi</a></li>
+      <li><div><strong>Zixuan Liu</strong><span>Tulane University</span></div><a class="email" href="mailto:zliu41@tulane.edu">zliu41@tulane.edu</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Agentic Laboratories · Workshop at AAAI 2027</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+  const btn = document.querySelector('.menu-btn');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  menu.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { menu.classList.remove('open'); btn.setAttribute('aria-expanded', false); }
+  });
+
+  const root = document.documentElement;
+  const themeBtn = document.querySelector('.theme-btn');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : systemDark.matches;
+  const syncThemeBtn = () => {
+    const dark = isDark();
+    root.classList.toggle('is-dark', dark);
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    themeBtn.title = dark ? 'Light mode' : 'Dark mode';
+  };
+  themeBtn.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    syncThemeBtn();
+  });
+  systemDark.addEventListener('change', syncThemeBtn);
+  syncThemeBtn();
+</script>
+</body>
+</html>
