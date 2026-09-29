@@ -197,14 +197,6 @@ section.alt { background: var(--bg-alt); }
 .subhead { margin: 52px 0 18px; font-size: 1.25rem; }
 @media (max-width: 400px) { .people { grid-template-columns: 1fr; } .person { grid-template-columns: 1fr; } }
 
-.orgs { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-.org { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: flex; gap: 14px; align-items: center; }
-.org .avatar { width: 48px; height: 48px; font-size: .95rem; flex: none; }
-.org h3 { font-size: .98rem; margin: 0; }
-.org h3 a { color: var(--ink); text-decoration: none; }
-.org h3 a:hover { color: var(--accent); }
-.org p { margin: 2px 0 0; font-size: .84rem; color: var(--ink-3); line-height: 1.4; }
-.org.main { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .group-title { font: 600 .82rem "Public Sans", system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 34px 0 12px; }
 
 /* contact + footer */
@@ -509,32 +501,123 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
     </div>
 
     <p class="group-title">Main organizers</p>
-    <div class="orgs">
-      <div class="org main"><div class="avatar">BS</div><div><h3><a href="https://people.epfl.ch/berend.smit?lang=en">Prof. Berend Smit</a></h3><p>EPFL, Switzerland</p></div></div>
-      <div class="org main"><div class="avatar">PF</div><div><h3><a href="https://profiles.imperial.ac.uk/p.freemont">Prof. Paul S. Freemont</a></h3><p>Imperial College London, UK</p></div></div>
-      <div class="org main"><div class="avatar">SK</div><div><h3><a href="https://www.aalto.fi/en/people/siavash-khajavi-haghighat">Prof. Siavash H. Khajavi</a></h3><p>Aalto University, Finland</p></div></div>
-      <div class="org main"><div class="avatar">TG</div><div><h3><a href="https://www.tirthankarghosal.com/">Dr. Tirthankar Ghosal</a></h3><p>Oak Ridge National Laboratory, USA</p></div></div>
-      <div class="org main"><div class="avatar">ZL</div><div><h3><a href="https://www.linkedin.com/in/zixuan-liu-8aa56b221/">Zixuan Liu</a></h3><p>Tulane University, USA</p></div></div>
+    <div class="people">
+      <article class="person">
+        <div class="avatar">BS</div>
+        <div>
+          <h3><a href="https://people.epfl.ch/berend.smit?lang=en">Prof. Berend Smit</a></h3>
+          <p class="aff">EPFL, Switzerland</p>
+          <p class="bio">Professor in EPFL’s Laboratory of Molecular Simulation. Works on molecular simulation, computational chemistry, and data-driven modeling for molecular and materials discovery.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">PF</div>
+        <div>
+          <h3><a href="https://profiles.imperial.ac.uk/p.freemont">Prof. Paul S. Freemont</a></h3>
+          <p class="aff">Imperial College London, UK</p>
+          <p class="bio">Professor at Imperial College London, Director of the London BioFoundry and Co-Director of SynbiCITE. Works on synthetic biology, biofoundries, genome engineering, and automated biological experimentation.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">SK</div>
+        <div>
+          <h3><a href="https://www.aalto.fi/en/people/siavash-khajavi-haghighat">Prof. Siavash H. Khajavi</a></h3>
+          <p class="aff">Aalto University, Finland</p>
+          <p class="bio">Assistant Professor of Operations Management. Works on agentic AI scientists, autonomous research, vision–language models for cyber-physical systems, and AI-enabled production and operations management.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">TG</div>
+        <div>
+          <h3><a href="https://www.tirthankarghosal.com/">Dr. Tirthankar Ghosal</a></h3>
+          <p class="aff">Oak Ridge National Laboratory, USA</p>
+          <p class="bio">Staff Scientist at ORNL. Works on AI for science, scientific hypothesis generation, large language models for science, agentic AI for discovery, and AI for laboratory operations.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">ZL</div>
+        <div>
+          <h3><a href="https://www.linkedin.com/in/zixuan-liu-8aa56b221/">Zixuan Liu</a></h3>
+          <p class="aff">Tulane University, USA</p>
+          <p class="bio">PhD candidate working on reinforcement learning, foundation models for robotics, embodied AI, and autonomous research.</p>
+        </div>
+      </article>
     </div>
 
     <p class="group-title">AI, robotics &amp; autonomous scientific systems</p>
-    <div class="orgs">
-      <div class="org"><div class="avatar">AG</div><div><h3><a href="https://animesh.garg.tech/">Prof. Animesh Garg</a></h3><p>Georgia Institute of Technology, USA</p></div></div>
-      <div class="org"><div class="avatar">TG</div><div><h3><a href="https://developer.nvidia.com/blog/author/tgibbs/">Tom Gibbs</a></h3><p>NVIDIA, USA</p></div></div>
-      <div class="org"><div class="avatar">RK</div><div><h3><a href="https://www.chalmers.se/en/persons/rossk/">Prof. Ross D. King</a></h3><p>Chalmers University of Technology, Sweden</p></div></div>
+    <div class="people">
+      <article class="person">
+        <div class="avatar">AG</div>
+        <div>
+          <h3><a href="https://animesh.garg.tech/">Prof. Animesh Garg</a></h3>
+          <p class="aff">Georgia Institute of Technology, USA</p>
+          <p class="bio">Stephen Fleming Early Career Professor in Computer Science. Works on robot learning, embodied AI, reinforcement learning, foundation models for robotics, and self-driving laboratories.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">TG</div>
+        <div>
+          <h3><a href="https://developer.nvidia.com/blog/author/tgibbs/">Tom Gibbs</a></h3>
+          <p class="aff">NVIDIA, USA</p>
+          <p class="bio">Senior Business Development Manager. Focuses on AI for science, high-performance scientific computing, AI-accelerated simulation, and integrating simulation with experimental data.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">RK</div>
+        <div>
+          <h3><a href="https://www.chalmers.se/en/persons/rossk/">Prof. Ross D. King</a></h3>
+          <p class="aff">Chalmers University of Technology, Sweden</p>
+          <p class="bio">Professor of Data Science and AI, known for the Robot Scientists Adam and Eve. Works on automated scientific discovery, laboratory robotics, and closed-loop autonomous experimentation.</p>
+        </div>
+      </article>
     </div>
 
     <p class="group-title">Chemistry, materials science &amp; molecular discovery</p>
-    <div class="orgs">
-      <div class="org"><div class="avatar">BD</div><div><h3><a href="https://www.nist.gov/people/brian-decost">Dr. Brian DeCost</a></h3><p>NIST, USA</p></div></div>
-      <div class="org"><div class="avatar">FS</div><div><h3><a href="https://chemie.uni-wuppertal.de/en/chemistry-home/research-groups/ag-strieth-kalthoff/">Prof. Felix Strieth-Kalthoff</a></h3><p>University of Wuppertal, Germany</p></div></div>
-      <div class="org"><div class="avatar">JT</div><div><h3><a href="https://jian-tang.com/">Prof. Jian Tang</a></h3><p>HEC Montréal, Canada</p></div></div>
+    <div class="people">
+      <article class="person">
+        <div class="avatar">BD</div>
+        <div>
+          <h3><a href="https://www.nist.gov/people/brian-decost">Dr. Brian DeCost</a></h3>
+          <p class="aff">NIST, USA</p>
+          <p class="bio">Materials Research Engineer. Works on applied AI, scientific machine learning, active learning, materials characterization, and autonomous experiment planning and execution.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">FS</div>
+        <div>
+          <h3><a href="https://chemie.uni-wuppertal.de/en/chemistry-home/research-groups/ag-strieth-kalthoff/">Prof. Felix Strieth-Kalthoff</a></h3>
+          <p class="aff">University of Wuppertal, Germany</p>
+          <p class="bio">Professor of Digital Chemistry. Works on machine learning for chemical reactivity, Bayesian optimization, reaction prediction, and data-driven reaction optimization.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">JT</div>
+        <div>
+          <h3><a href="https://jian-tang.com/">Prof. Jian Tang</a></h3>
+          <p class="aff">HEC Montréal, Canada</p>
+          <p class="bio">Associate Professor working on AI for science, geometric deep learning, generative models for molecule and protein discovery, and generative agents for biomedicine.</p>
+        </div>
+      </article>
     </div>
 
     <p class="group-title">Synthetic biology &amp; biological automation</p>
-    <div class="orgs">
-      <div class="org"><div class="avatar">NG</div><div><h3><a href="https://www.linkedin.com/in/nicholas-gold-8a8207254/">Nicholas Gold</a></h3><p>Genome Foundry, Concordia University, Canada</p></div></div>
-      <div class="org"><div class="avatar">MJ</div><div><h3><a href="https://engineering.stanford.edu/people/michael-jewett">Prof. Michael C. Jewett</a></h3><p>Stanford University, USA</p></div></div>
+    <div class="people">
+      <article class="person">
+        <div class="avatar">NG</div>
+        <div>
+          <h3><a href="https://www.linkedin.com/in/nicholas-gold-8a8207254/">Nicholas Gold</a></h3>
+          <p class="aff">Genome Foundry, Concordia University, Canada</p>
+          <p class="bio">Senior Advisor for Business Development and Partnerships. Works on genome foundries, microbial genome engineering, and automated high-throughput biological experimentation.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar">MJ</div>
+        <div>
+          <h3><a href="https://engineering.stanford.edu/people/michael-jewett">Prof. Michael C. Jewett</a></h3>
+          <p class="aff">Stanford University, USA</p>
+          <p class="bio">Professor of Bioengineering and, by courtesy, Chemical Engineering. Works on synthetic biology, cell-free bioengineering, AI-guided biotechnology, and biomanufacturing.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
