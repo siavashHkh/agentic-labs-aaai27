@@ -168,9 +168,8 @@ section.alt { background: var(--bg-alt); }
 @media (max-width: 760px) { .tracks, .review { grid-template-columns: 1fr; } }
 
 /* reviewers */
-.rev-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+.rev-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
 .rev-grid h3 { margin-bottom: 14px; }
-.rev-grid > div { padding-top: 27px; } /* matches .join padding + border so both headings sit on one line */
 .why { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
 .why li { padding-left: 18px; position: relative; color: var(--ink-2); }
 .why li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
@@ -181,7 +180,7 @@ section.alt { background: var(--bg-alt); }
 .join-contacts div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
 .btn-solid { background: var(--accent); color: var(--bg); }
 .btn-solid:hover { background: var(--accent-ink); color: var(--bg); }
-@media (max-width: 860px) { .rev-grid { grid-template-columns: 1fr; gap: 28px; } .rev-grid > div { padding-top: 0; } }
+@media (max-width: 860px) { .rev-grid { grid-template-columns: 1fr; gap: 28px; } }
 
 /* dates */
 .dates { max-width: 720px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
@@ -650,14 +649,13 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 </section>
 
 <section class="block" id="reviewers">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Call for reviewers</p>
-      <h2>Help us review</h2>
-      <p class="lede">We are looking for reviewers from both AI and the experimental sciences: multi-agent systems, planning, robotics and embodied AI, world models, and autonomous chemistry, materials science and biology.</p>
-    </div>
-    <div class="rev-grid">
+  <div class="wrap rev-grid">
       <div>
+        <div class="section-head">
+          <p class="eyebrow">Call for reviewers</p>
+          <h2>Help us review</h2>
+          <p class="lede">We are looking for reviewers from both AI and the experimental sciences: multi-agent systems, planning, robotics and embodied AI, world models, and autonomous chemistry, materials science and biology.</p>
+        </div>
         <h3>Why review</h3>
         <ul class="why">
           <li><strong>See new work early.</strong> Read the latest research on autonomous laboratories before it is public.</li>
@@ -679,7 +677,6 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
         </div>
         <a class="btn btn-solid" href="mailto:siavash.khajavi@aalto.fi,zliu41@tulane.edu?subject=Reviewer%20for%20Agentic%20Laboratories%20%40%20AAAI-27">Email us to volunteer</a>
       </aside>
-    </div>
   </div>
 </section>
 
