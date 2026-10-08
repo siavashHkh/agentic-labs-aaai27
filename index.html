@@ -160,7 +160,25 @@ section.alt { background: var(--bg-alt); }
 .review div { padding: 20px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 10px 10px 0; }
 .review h3 { font-size: 1rem; }
 .review p { margin: 0; color: var(--ink-2); font-size: .92rem; }
+.duty { margin-top: 16px; padding: 20px; border-left: 3px solid var(--warm); background: var(--warm-soft); border-radius: 0 10px 10px 0; }
+.duty h3 { font-size: 1rem; }
+.duty p { margin: 0; color: var(--ink-2); font-size: .92rem; }
 @media (max-width: 760px) { .tracks, .review { grid-template-columns: 1fr; } }
+
+/* reviewers */
+.rev-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+.rev-grid h3 { margin-bottom: 14px; }
+.why { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.why li { padding-left: 18px; position: relative; color: var(--ink-2); }
+.why li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.why strong { color: var(--ink); }
+.join { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; box-shadow: var(--shadow); }
+.join ol { margin: 0 0 18px; padding-left: 20px; color: var(--ink-2); display: grid; gap: 8px; }
+.join-contacts { display: grid; gap: 10px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.join-contacts div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.btn-solid { background: var(--accent); color: var(--bg); }
+.btn-solid:hover { background: var(--accent-ink); color: var(--bg); }
+@media (max-width: 860px) { .rev-grid { grid-template-columns: 1fr; gap: 28px; } }
 
 /* dates */
 .dates { max-width: 720px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
@@ -228,6 +246,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#speakers">Speakers</a></li>
       <li><a href="#organizers">Organizers</a></li>
+      <li><a href="#reviewers">Reviewers</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-btn" type="button" aria-label="Switch to dark mode">
@@ -254,6 +273,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
         <a class="btn btn-primary" href="#cfp">Call for Papers</a>
         <a class="btn btn-ghost" href="https://openreview.net/group?id=AAAI.org/2027/Workshop/Agentic_Labs">Submit on OpenReview</a>
         <a class="btn btn-ghost" href="#schedule">View schedule</a>
+        <a class="btn btn-ghost" href="#reviewers">Call for Reviewers</a>
       </div>
     </div>
 
@@ -330,6 +350,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 
     <h2 class="subhead">Submission tracks</h2>
     <p class="lede">Both tracks are hosted on <a href="https://openreview.net/group?id=AAAI.org/2027/Workshop/Agentic_Labs">OpenReview</a>. We welcome work that is unpublished or currently under submission elsewhere.</p>
+    <p class="lede">Accepted workshop papers will be posted on OpenReview. There will be no other proceedings.</p>
     <div class="tracks">
       <div class="track">
         <div class="pages">7<small>pages max</small></div>
@@ -346,6 +367,10 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
       <div><h3>Review</h3><p>Every paper gets at least three experienced reviewers. Conflicts of interest are handled through OpenReview.</p></div>
       <div><h3>Oral presentations</h3><p>Reviewers can nominate papers from either track for an oral. Non-conflicted reviewers then rank the nominees.</p></div>
       <div><h3>Best Student Paper</h3><p>An award for a paper authored or co-authored by a student, to recognize their research potential and raise their visibility.</p></div>
+    </div>
+    <div class="duty">
+      <h3>Reviewing duty for authors</h3>
+      <p>Authors of submitted workshop papers may be asked to review at least one other submission. Please make sure at least one author per paper has an OpenReview profile and is available during the review period. <a href="#reviewers">More about reviewing</a></p>
     </div>
   </div>
 </section>
@@ -622,7 +647,41 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   </div>
 </section>
 
-<section class="block" id="contact">
+<section class="block" id="reviewers">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Call for reviewers</p>
+      <h2>Help us review</h2>
+      <p class="lede">We are looking for reviewers from both AI and the experimental sciences: multi-agent systems, planning, robotics and embodied AI, world models, and autonomous chemistry, materials science and biology.</p>
+    </div>
+    <div class="rev-grid">
+      <div>
+        <h3>Why review</h3>
+        <ul class="why">
+          <li><strong>See new work early.</strong> Read the latest research on autonomous laboratories before it is public.</li>
+          <li><strong>Shape a new community.</strong> Help set the standard for work where agentic AI meets physical experimentation.</li>
+          <li><strong>Cross disciplines.</strong> Papers come from AI, robotics and lab science, so you will see how other fields approach the same problems.</li>
+          <li><strong>Build reviewing experience.</strong> A good opportunity for postdocs and early-career researchers to review for an AAAI workshop.</li>
+        </ul>
+      </div>
+      <aside class="join">
+        <h3>How to join</h3>
+        <ol>
+          <li>Email Prof. Siavash Khajavi and Mrs. Zixuan Liu with your name, affiliation, OpenReview profile and areas of expertise.</li>
+          <li>We will send you an invitation through OpenReview.</li>
+          <li>Reviewing takes place between the submission deadline (November 20, 2026) and author notification (December 2, 2026).</li>
+        </ol>
+        <div class="join-contacts">
+          <div><strong>Prof. Siavash H. Khajavi</strong><a class="email" href="mailto:siavash.khajavi@aalto.fi">siavash.khajavi@aalto.fi</a></div>
+          <div><strong>Mrs. Zixuan Liu</strong><a class="email" href="mailto:zliu41@tulane.edu">zliu41@tulane.edu</a></div>
+        </div>
+        <a class="btn btn-solid" href="mailto:siavash.khajavi@aalto.fi,zliu41@tulane.edu?subject=Reviewer%20for%20Agentic%20Laboratories%20%40%20AAAI-27">Email us to volunteer</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="contact">
   <div class="wrap contact">
     <div>
       <p class="eyebrow">Contact</p>
