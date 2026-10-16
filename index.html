@@ -162,6 +162,11 @@ section.alt { background: var(--bg-alt); }
 .review div { padding: 20px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 10px 10px 0; }
 .review h3 { font-size: 1rem; }
 .review p { margin: 0; color: var(--ink-2); font-size: .92rem; }
+.format { margin-top: 16px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); display: flex; align-items: center; justify-content: space-between; gap: 16px 28px; flex-wrap: wrap; }
+.format > div { flex: 1 1 380px; }
+.format h3 { margin: 0 0 6px; }
+.format p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.format .btn { flex: none; text-align: center; }
 .duty { margin-top: 16px; padding: 20px; border-left: 3px solid var(--warm); background: var(--warm-soft); border-radius: 0 10px 10px 0; }
 .duty h3 { font-size: 1rem; }
 .duty p { margin: 0; color: var(--ink-2); font-size: .92rem; }
@@ -363,6 +368,13 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
         <h3>Short Papers Track</h3>
         <p>Works in progress and intermediate milestones. We especially encourage submissions from underrepresented, under-resourced and early-career researchers to share experiences, get feedback and find collaborators.</p>
       </div>
+    </div>
+    <div class="format">
+      <div>
+        <h3>Paper format</h3>
+        <p>All submissions must follow the AAAI-27 format. Use the official AAAI-27 Author Kit, which includes LaTeX and Word templates. Page limits above exclude references and supplementary material.</p>
+      </div>
+      <a class="btn btn-solid" href="https://aaai.org/authorkit27/">Download AAAI-27 Author Kit (.zip)</a>
     </div>
     <div class="review">
       <div><h3>Review</h3><p>Every paper gets at least three experienced reviewers. Conflicts of interest are handled through OpenReview.</p></div>
