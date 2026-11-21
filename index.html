@@ -104,6 +104,8 @@ a:hover { color: var(--accent); }
 .meta li { display: flex; align-items: center; gap: 8px; }
 .meta svg { width: 17px; height: 17px; stroke: #5fd3c2; fill: none; stroke-width: 2; flex: none; }
 .meta .tba { background: rgba(240,165,74,.15); color: #f5b867; }
+.hero .deadline { margin: 0 0 1rem; color: #f5b867; }
+.hero .deadline a { color: inherit; }
 .cta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 460px; }
 .cta .btn { text-align: center; }
 @media (max-width: 420px) { .cta { grid-template-columns: 1fr; } }
@@ -276,6 +278,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
         <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Palais des Congrès, Montréal, Canada</li>
         <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Full day, in person</li>
       </ul>
+      <p class="deadline"><strong><a href="#dates">Paper submission deadline extended</a></strong> to <time datetime="2026-11-27T23:00:00-12:00">Friday, November 27, 2026 at 23:00 Anywhere on Earth (AoE)</time>.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#cfp">Call for Papers</a>
         <a class="btn btn-ghost" href="https://openreview.net/group?id=AAAI.org/2027/Workshop/Agentic_Labs">Submit on OpenReview</a>
@@ -396,12 +399,12 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
     </div>
     <div class="dates">
       <div><span>Submission site</span><span><a href="https://openreview.net/group?id=AAAI.org/2027/Workshop/Agentic_Labs">OpenReview</a></span></div>
-      <div><span>Paper submission deadline</span><span>Fri, Nov 20, 2026</span></div>
+      <div><span>Extended paper submission deadline</span><span><time datetime="2026-11-27T23:00:00-12:00">Fri, Nov 27, 2026 at 23:00 AoE</time></span></div>
       <div><span>Author notification</span><span>Wed, Dec 2, 2026</span></div>
       <div><span>Camera-ready deadline</span><span class="tba">TBA</span></div>
       <div><span>Workshop day</span><span>Mon, Feb 22 or Tue, Feb 23, 2027 <span class="tba">Day TBA</span></span></div>
     </div>
-    <p class="note">The AAAI-27 workshop program takes place Monday, February 22 and Tuesday, February 23, 2027, at the Palais des Congrès de Montréal. Deadlines follow the <a href="https://aaai.org/conference/aaai/aaai-27/workshops-call/">AAAI-27 workshop program</a> guidelines. All deadlines are 23:59 Anywhere on Earth (AoE).</p>
+    <p class="note">The AAAI-27 workshop program takes place Monday, February 22 and Tuesday, February 23, 2027, at the Palais des Congrès de Montréal. Other deadlines follow the <a href="https://aaai.org/conference/aaai/aaai-27/workshops-call/">AAAI-27 workshop program</a> guidelines and are at 23:59 AoE.</p>
   </div>
 </section>
 
@@ -681,7 +684,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
         <ol>
           <li>Email Prof. Siavash Khajavi and Mrs. Zixuan Liu with your name, affiliation, OpenReview profile and areas of expertise.</li>
           <li>We will send you an invitation through OpenReview.</li>
-          <li>Reviewing takes place between the submission deadline (November 20, 2026) and author notification (December 2, 2026).</li>
+          <li>Reviewing takes place after the <a href="#dates">submission deadline</a> and before author notification on December 2, 2026.</li>
         </ol>
         <div class="join-contacts">
           <div><strong>Prof. Siavash H. Khajavi</strong><a class="email" href="mailto:siavash.khajavi@aalto.fi">siavash.khajavi@aalto.fi</a></div>
